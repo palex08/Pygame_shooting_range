@@ -6,7 +6,6 @@ pygame.init()
 pygame.mixer.init()
 pygame.font.init()
 
-
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 650
 SCORE = 0
@@ -32,7 +31,6 @@ font = pygame.font.Font(None, 36)
 text_x = 600
 text_y = 25
 
-
 message_color = (255, 0, 0)
 message_position = [120, 580]
 message_active = False
@@ -54,7 +52,7 @@ while running:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             sound_shot.play()
-            time.sleep(0.3)
+            pygame.time.delay(300)
             sound_refill.play()
 
             if target_x + 33 < event.pos[0] < target_x + 87 and target_y + 45 < event.pos[1] < target_y + 115:
@@ -72,8 +70,6 @@ while running:
                 message_active = True
                 message_timer = 600
 
-
-
     if message_active:
         rendered_message = font.render(message, True, message_color)
         screen.blit(rendered_message, message_position)
@@ -83,6 +79,6 @@ while running:
             message_active = False
             message_position[1] = 580
 
-
     pygame.display.update()
+
 pygame.quit()
