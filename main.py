@@ -34,7 +34,7 @@ text_y = 25
 
 
 message_color = (255, 0, 0)
-message_position = [120, 580]  # Стартовая позиция внизу экрана
+message_position = [120, 580]
 message_active = False
 message_timer = 0
 
@@ -75,17 +75,13 @@ while running:
 
 
     if message_active:
-        # Рендерим текст
         rendered_message = font.render(message, True, message_color)
-        # Отображаем текст на экране
         screen.blit(rendered_message, message_position)
-        # Обновляем позицию сообщения для эффекта вылета
-        message_position[1] -= 0.2  # Поднимаем сообщение вверх
-        # Обновляем таймер
+        message_position[1] -= 0.2
         message_timer -= 0.5
         if message_timer <= 0:
             message_active = False
-            message_position[1] = 580  # Возвращаем на исходную позицию
+            message_position[1] = 580
 
 
     pygame.display.update()
