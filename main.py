@@ -1,7 +1,9 @@
 import pygame
 import random
+import time
 
 pygame.init()
+pygame.mixer.init()
 
 # infoObject = pygame.display.Info()
 # SCREEN_WIDTH = infoObject.current_w
@@ -24,6 +26,8 @@ target_y = random.randint(0, SCREEN_HEIGHT - 150)
 cursor_img = pygame.image.load("img/cursor.png")
 pygame.mouse.set_visible(False)
 
+sound_shot = pygame.mixer.Sound("sounds/shot.mp3")
+sound_refill = pygame.mixer.Sound("sounds/refill.mp3")
 
 running = True
 while running:
@@ -39,6 +43,9 @@ while running:
             running = False
 
         if event.type == pygame.MOUSEBUTTONDOWN:
+            sound_shot.play()
+            time.sleep(0.3)
+            sound_refill.play()
 
             if target_x + 33 < event.pos[0] < target_x + 87 and target_y + 45 < event.pos[1] < target_y + 115:
                 target_x = random.randint(0, SCREEN_WIDTH - 120)
@@ -46,4 +53,5 @@ while running:
             elif target_x + 50 < event.pos[0] < target_x + 73 and target_y + 5 < event.pos[1] < target_y + 37:
                 target_x = random.randint(0, SCREEN_WIDTH - 120)
                 target_y = random.randint(0, SCREEN_HEIGHT - 150)
+
 pygame.quit()
