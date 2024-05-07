@@ -5,9 +5,6 @@ import time
 pygame.init()
 pygame.mixer.init()
 
-# infoObject = pygame.display.Info()
-# SCREEN_WIDTH = infoObject.current_w
-# SCREEN_HEIGHT = infoObject.current_h
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -36,7 +33,6 @@ while running:
     mouse_pos = pygame.mouse.get_pos()
     cursor_pos = (mouse_pos[0] - cursor_img.get_width() / 2, mouse_pos[1] - cursor_img.get_height() / 2)
     screen.blit(cursor_img, cursor_pos)
-    pygame.display.update()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -53,5 +49,5 @@ while running:
             elif target_x + 50 < event.pos[0] < target_x + 73 and target_y + 5 < event.pos[1] < target_y + 37:
                 target_x = random.randint(0, SCREEN_WIDTH - 120)
                 target_y = random.randint(0, SCREEN_HEIGHT - 150)
-
+    pygame.display.update()
 pygame.quit()
